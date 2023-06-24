@@ -1,10 +1,10 @@
 package com.example.ProyectoFinal.controladores;
 
-
 import com.example.ProyectoFinal.entidades.Autor;
 import com.example.ProyectoFinal.entidades.Libro;
 import com.example.ProyectoFinal.servicios.AutorServicio;
 import com.example.ProyectoFinal.servicios.LibroServicio;
+import com.example.ProyectoFinal.servicios.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -24,6 +25,21 @@ public class LibroControlador {
 
     @Autowired
     private AutorServicio autorServicio;
+
+
+    @Autowired
+    private UsuarioServicio Uservicio;
+
+
+    @GetMapping("/login")
+    public String iniciarSesion(){
+        return "login";
+    }
+
+    @GetMapping("/")
+    public String verPaginaDeInicio(){
+        return "index";
+    }
 
     @GetMapping("/home")
     public String paginaPrincipal(){
